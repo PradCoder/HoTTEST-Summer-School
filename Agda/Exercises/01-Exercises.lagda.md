@@ -40,7 +40,8 @@ the leftmost argument only.
 
 ```agda
 _&&'_ : Bool → Bool → Bool
-a &&' b = {!!}
+true &&' b = b
+false &&' b = false
 ```
 
 One advantage of this definition is that it reads just like a Boolean truth
@@ -54,7 +55,9 @@ verbose definition.
 
 ```agda
 _xor_ : Bool → Bool → Bool
-a xor b = {!!}
+true xor true = false
+true xor false = true
+false xor b = b
 ```
 
 ### Exercise 3 (★)
@@ -67,16 +70,18 @@ left hand side and the right hand side compute to the same value.
 
 ```agda
 _^_ : ℕ → ℕ → ℕ
-n ^ m = {!!}
+n ^ zero = 1
+n ^ suc m = n * (n ^ m)
 
 ^-example : 3 ^ 4 ≡ 81
-^-example = {!!} -- refl 81 should fill the hole here
+^-example = refl 81 -- refl 81 should fill the hole here
 
 _! : ℕ → ℕ
-n ! = {!!}
+zero ! = 1
+suc n ! = suc n * (n !)
 
 !-example : 4 ! ≡ 24
-!-example = {!!} -- refl 24 should fill the hole here
+!-example = refl 24 -- refl 24 should fill the hole here
 ```
 
 ### Exercise 4 (★)
