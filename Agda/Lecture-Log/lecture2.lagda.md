@@ -13,7 +13,7 @@ open import introduction using (ℕ ; zero ; suc ; _+_)
 -- empty type
 data 𝟘 : Type where
 
--- Π x ꞉ X , A x
+-- Π x ꞉ X , A x 
 -- (X → B) =. Π x ꞉ X , B
 
 𝟘-elim : {A : 𝟘 → Type} (x : 𝟘) → A x
@@ -103,7 +103,7 @@ data 𝟚 : Type where
 Pi : (A : Type) (B : A → Type) → Type
 Pi A B = (x : A) → B x
 
-syntax Pi A (λ x → b) = Π x ꞉ A , b
+syntax Pi A (λ x → b) = Π x ꞉ A , b -- this defined backwards (think about symmetry of = when using)
 --                          ↑
 --                         this is typed "\:4" in emacs mode and is not the same as ":".
 --                         (we can't use the normal one unfortunately.)
@@ -189,7 +189,7 @@ D false = Bool
 Σ-example₁ = (true  , 17)
 Σ-example₂ = (false , true)
 
--- Σ-elim is "curry":
+-- Σ-elim is "curry": "Holy Moly"
 
 Σ-elim : {A : Type } {B : A → Type} {C : (Σ x ꞉ A , B x) → Type}
        → ((x : A) (y : B x) → C (x , y))

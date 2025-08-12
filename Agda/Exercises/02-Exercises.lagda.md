@@ -35,10 +35,16 @@ open import sums
 Prove
 ```agda
 uncurry : {A B X : Type} → (A → B → X) → (A × B → X)
-uncurry = {!!}
+uncurry f (a , b) = f a b
+
+uncurry' : {A B X : Type} → (A → B → X) → (A × B → X)
+uncurry' f ab = f (pr₁ ab) (pr₂(ab))
 
 curry : {A B X : Type} → (A × B → X) → (A → B → X)
-curry = {!!}
+curry f a b = f (a , b)
+
+curryUncurry : {A B X : Type} → (A × B → X) ⇔ (A → B → X)
+curryUncurry = curry , uncurry
 ```
 You might know these functions from programming e.g. in Haskell.
 But what do they say under the propositions-as-types interpretation?
@@ -178,5 +184,5 @@ Prove that
 
 ```agda
 decidable-equality-char : (A : Type) → has-decidable-equality A ⇔ has-bool-dec-fct A
-decidable-equality-char = ?
+decidable-equality-char = {!!}
 ```
