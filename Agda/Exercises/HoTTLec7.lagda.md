@@ -1,4 +1,4 @@
-# Week 07 - Lecture Material
+# Week 07 - Lecture Material and Exercises
 Theorem For any family of maps f:Π (x : A) B x → C x the following
 are logically equivlent
 

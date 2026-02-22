@@ -170,4 +170,14 @@ lh (x :: xs) ys = IH
  where
   IH : length (xs ++ ys) ≣ (length xs + length ys)
   IH = lh xs ys
+
+data Vector (A : Type) : ℕ → Type where
+ [] : Vector A (zero)
+ _::_ : {n : ℕ} → A → Vector A n → Vector A (suc n)
+
+head : {A : Type} {n : ℕ} → Vector A (suc n) → A
+head (x :: xs) = x
+
+tail : {A : Type} {n : ℕ} → Vector A (suc n) → Vector A n
+tail (x :: xs) = xs
 ```
