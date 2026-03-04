@@ -183,6 +183,24 @@ has-bool-dec-fct A = Σ f ꞉ (A → A → Bool) , (∀ x y → x ≡ y ⇔ (f x
 Prove that
 
 ```agda
+case1 : (A : Type) → has-decidable-equality A → has-bool-dec-fct A
+case1 A p = _R_ , {!λ x y → lem₂ x y , lem₁ x y!} where
+  _R_ : A → A → Bool
+  x R y with p x y
+  ... | inl q = true
+  ... | inr ¬q = false
+
+  lem₁ : (x y : A) → (x R y) ≡ true → x ≡ y
+  lem₁ x y q with {!p x y!}
+  ... | inl r = r
+
+  lem₂ : (x y : A) → x ≡ y → (x R y) ≡ true
+  lem₂ x x (refl x) with p x x
+  ... | inl q = refl true
+  ... | inr q = 𝟘-elim (q (refl x))
+  
 decidable-equality-char : (A : Type) → has-decidable-equality A ⇔ has-bool-dec-fct A
-decidable-equality-char = {!!}
+decidable-equality-char A = {!!}
+
+
 ```
